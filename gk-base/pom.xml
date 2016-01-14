@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gkframework</groupId>
+    <artifactId>gk-fw-base</artifactId>
+    <name>gk-fw-base</name>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <!-- 分发构件至私服 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>AcFun-Snapshot</id>
+            <name>AcFun-Snapshot repository</name>
+            <url>http://nexus.im.acfun.tv/nexus/content/repositories/AcFun-Snapshot/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+        <repository>
+            <id>AcFun-Release</id>
+            <name>AcFun-Release repository</name>
+            <url>http://nexus.im.acfun.tv/nexus/content/repositories/AcFun-Release/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <!-- dubbo 启动 -->
+        <spring.boot.version>0.1.2-RELEASE</spring.boot.version>
+        <jetty.boot.version>0.1.2-RELEASE</jetty.boot.version>
+        <tomcat.boot.version>0.1.2-RELEASE</tomcat.boot.version>
+        <dubbo.collector.version>0.1.1-RELEASE</dubbo.collector.version>
+        <dubbo.version>2.5.3</dubbo.version>
+        <spring.collector.version>0.1.1-RELEASE</spring.collector.version>
+        <mybatis.orm.version>0.1.1-RELEASE</mybatis.orm.version>
+        <model.orm.version>0.1.2-RELEASE</model.orm.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+        <!-- config 统一配置-->
+        <config.diamond.version>0.1.1-RELEASE</config.diamond.version>
+        <org.springframework-version>4.0.5.RELEASE</org.springframework-version>
+        <slf4j-api.version>1.7.7</slf4j-api.version>
+        <logback-classic.version>1.1.3</logback-classic.version>
+        <mysql-connector.version>5.1.30</mysql-connector.version>
+        <druid.version>1.0.9</druid.version>
+        <jedis.version>2.7.2</jedis.version>
+        <aspectjrt.version>1.8.2</aspectjrt.version>
+        <aspectjweaver.version>1.8.2</aspectjweaver.version>
+        <netty.version>4.0.23.Final</netty.version>
+        <lombok.version>1.14.2</lombok.version>
+        <fst.version>1.59</fst.version>
+        <snappy-java.version>1.1.2-RC3</snappy-java.version>
+        <fastjson.version>1.2.6</fastjson.version>
+        <cglib.version>3.1</cglib.version>
+        <google.json.version>2.2.4</google.json.version>
+        <org.json.version>20140107</org.json.version>
+        <logback.ext.spring.version>0.1.2</logback.ext.spring.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!-- biz -->
+            <!-- boot start -->
+            <dependency>
+                <groupId>tv.acframework.boot</groupId>
+                <artifactId>ac-boot-spring</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tv.acframework.boot</groupId>
+                <artifactId>ac-boot-jetty</artifactId>
+                <version>${jetty.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tv.acframework.boot</groupId>
+                <artifactId>ac-boot-tomcat</artifactId>
+                <version>${tomcat.boot.version}</version>
+            </dependency>
+
+            <!-- boot end -->
+            <!-- collector start -->
+            <dependency>
+                <groupId>tv.acframework.qos</groupId>
+                <artifactId>ac-qos-collector-dubbo</artifactId>
+                <version>${dubbo.collector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tv.acframework.qos</groupId>
+                <artifactId>ac-qos-collector-spring</artifactId>
+                <version>${spring.collector.version}</version>
+            </dependency>
+            <!-- collector end -->
+
+            <!-- config start -->
+            <dependency>
+                <groupId>tv.acframework.config</groupId>
+                <artifactId>ac-config-diamond</artifactId>
+                <version>${config.diamond.version}</version>
+            </dependency>
+            <!-- config end -->
+            <!-- orm start -->
+            <dependency>
+                <groupId>tv.acframework.orm</groupId>
+                <artifactId>ac-orm-mybatis</artifactId>
+                <version>${mybatis.orm.version}</version>
+            </dependency>
+            <!-- orm end -->
+
+            <!-- model start-->
+            <dependency>
+                <groupId>tv.acframework.framework</groupId>
+                <artifactId>ac-framework-model</artifactId>
+                <version>${model.orm.version}</version>
+            </dependency>
+            <!-- model end-->
+
+            <!-- dubbo 服务注册方式 start 必须引入-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.netty</groupId>
+                <artifactId>netty</artifactId>
+                <version>3.2.7.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.18.2-GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <!-- dubbo 服务注册方式 end -->
+
+            <!--log-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j-api.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j-api.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.logback-extensions</groupId>
+                <artifactId>logback-ext-spring</artifactId>
+                <version>${logback.ext.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!--datasource-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <!--spring-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <!--AOP-->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectjrt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+            <!-- servlet-->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--tools-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>18.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.2</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.im4java</groupId>
+                <artifactId>im4java</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+            <!-- json -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.4.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${google.json.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${org.json.version}</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jayway.jsonpath</groupId>
+                <artifactId>json-path</artifactId>
+                <version>0.9.1</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- cglib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware.kryo</groupId>
+                <artifactId>kryo</artifactId>
+                <version>2.24.0</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.3.5</version>
+            </dependency>
+            <!--netty-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec-http</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-buffer</artifactId>
+                <version>${netty.version}</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <!--test-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+                <version>4.11</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <scope>test</scope>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <!-- Fast Serialization -->
+            <dependency>
+                <groupId>de.ruedigermoeller</groupId>
+                <artifactId>fst</artifactId>
+                <version>${fst.version}</version>
+            </dependency>
+            <!-- Snappy-java -->
+            <dependency>
+                <groupId>org.xerial.snappy</groupId>
+                <artifactId>snappy-java</artifactId>
+                <version>${snappy-java.version}</version>
+            </dependency>
+            <!-- commons-httpclient -->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--copy lib-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.7</version>
+                    <executions>
+                        <execution>
+                            <id>copy</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>
+                                    ${project.build.directory}/lib
+                                </outputDirectory>
+                                <includeScope>runtime</includeScope>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--comiler jdk1.8-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>${file.encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!--fork source-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.2.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--fork javadoc-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.9.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--default jar-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5</version>
+                    <configuration>
+                        <tagNameFormat>@{project.version}.RELEASE</tagNameFormat>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.7</version>
+                    <configuration>
+                        <encoding>${file.encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <!-- 在运行完“mvn checkstyle:checkstyle”命令后，
+                可以运行"mvn jxr:jxr"来使checkstyle的结果可以直接跳转到代码行位置-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.9.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+    <!-- 本地私服 -->
+    <repositories>
+        <repository>
+            <id>acfun nexus</id>
+            <url>http://nexus.im.acfun.tv/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>
