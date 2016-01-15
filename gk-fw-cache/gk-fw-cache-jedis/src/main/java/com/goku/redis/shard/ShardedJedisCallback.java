@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 /**
  * Jedis拦截器
- * Created by fzy on 2014/7/6.
+ * Created by moueimei on 2014/7/6.
  */
 @Component
 public class ShardedJedisCallback extends AbstractCallback {

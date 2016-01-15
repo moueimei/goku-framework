@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created on 2014/9/26.
  *
- * @author FZY
+ * @author moueimei
  */
 public class JedisCallbackFilter implements CallbackFilter {
 

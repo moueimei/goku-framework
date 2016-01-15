@@ -7,7 +7,7 @@ import redis.clients.jedis.Jedis;
 
 /**
  * Jedis代理
- * Created by fzy on 2014/7/6.
+ * Created by moueimei on 2014/7/6.
  */
 @Component
 public class JedisProxy implements ApplicationContextAware {

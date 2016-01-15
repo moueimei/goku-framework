@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redis实现的分布式锁
- * Created by fzy on 2014/9/1.
+ * Created by moueimei on 2014/9/1.
  */
 public final class JLock {
 

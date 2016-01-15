@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Jedis代理
- * Created by fzy on 2014/7/6.
+ * Created by moueimei on 2014/7/6.
  */
 @Component
 public class ShardedJedisFactoryBean implements FactoryBean<ShardedJedis> {

@@ -7,7 +7,7 @@ import redis.clients.jedis.BinaryJedisCommands;
 /**
  * Created on 2014/12/11.
  *
- * @author FZY
+ * @author moueimei
  */
 public class JedisResource<T extends BinaryJedisCommands> {
     private static final Logger LOGGER = LoggerFactory.getLogger(JedisResource.class);

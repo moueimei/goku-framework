@@ -7,7 +7,7 @@ import java.lang.annotation.*;
  * <p>使用注解后支持pipelined,watch,unwatch,multi方法</p>
  * Created on 2014/9/26.
  *
- * @author FZY
+ * @author moueimei
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

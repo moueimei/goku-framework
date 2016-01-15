@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created on 2014/9/26.
  *
- * @author FZY
+ * @author moueimei
  */
 @Component
 public class RedisAdvisor extends AbstractPointcutAdvisor {

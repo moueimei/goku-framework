@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 /**
  * Created on 2014/9/26.
  *
- * @author FZY
+ * @author moueimei
  */
 public abstract class AbstractCallback implements MethodInterceptor {
 

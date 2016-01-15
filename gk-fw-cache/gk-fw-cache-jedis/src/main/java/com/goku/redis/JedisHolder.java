@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created on 2014/9/26.
  *
- * @author FZY
+ * @author moueimei
  */
 public class JedisHolder implements InitializingBean {
 

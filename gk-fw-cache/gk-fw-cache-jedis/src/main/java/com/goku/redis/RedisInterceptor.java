@@ -8,7 +8,7 @@ import redis.clients.jedis.exceptions.JedisException;
 /**
  * Created on 2014/9/27.
  *
- * @author FZY
+ * @author moueimei
  */
 @Component
 public class RedisInterceptor implements MethodInterceptor {
