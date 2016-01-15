@@ -2,6 +2,7 @@ package com.gkframework.config.core;
 
 
 import com.gkframework.config.core.util.ObjectUtils;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.StringReader;

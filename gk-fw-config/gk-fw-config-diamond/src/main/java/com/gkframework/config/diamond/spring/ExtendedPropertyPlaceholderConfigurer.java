@@ -1,5 +1,8 @@
 package com.gkframework.config.diamond.spring;
 
+import com.gkframework.config.core.EnvConfigurer;
+import com.gkframework.config.core.PropertyConfigurer;
+import com.gkframework.config.core.util.StringUtils;
 import com.taobao.diamond.manager.DiamondManager;
 import com.taobao.diamond.manager.ManagerListener;
 import com.taobao.diamond.manager.impl.DefaultDiamondManager;
@@ -7,9 +10,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
-import tv.acframework.config.core.EnvConfigurer;
-import tv.acframework.config.core.PropertyConfigurer;
-import tv.acframework.config.core.util.StringUtils;
 
 import java.io.IOException;
 import java.io.StringReader;

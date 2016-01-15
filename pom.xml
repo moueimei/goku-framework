@@ -21,6 +21,8 @@
         <module>gk-base</module>
         <module>gk-fw-boot</module>
         <module>gk-fw-config</module>
+        <module>gk-fw-cache</module>
+        <module>gk-fw-qos</module>
     </modules>
 
     <!-- 本地私服 -->

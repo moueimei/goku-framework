@@ -4,6 +4,7 @@ package com.gkframework.boot;
 import com.gkframework.boot.core.Container;
 import com.gkframework.boot.utils.SystemPropertiesUtils;
 import org.apache.log4j.Logger;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * SpringContainer. (SPI, Singleton, ThreadSafe)

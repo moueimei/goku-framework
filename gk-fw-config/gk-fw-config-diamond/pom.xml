@@ -20,8 +20,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.goku.fw.boot</groupId>
-            <artifactId>gk-fw-boot-core</artifactId>
+            <groupId>com.gkframework.config</groupId>
+            <artifactId>gk-fw-config-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
