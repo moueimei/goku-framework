@@ -25,7 +25,7 @@ public class HongBaoAlgorithm {
             total += result[i];
         }
         //检查生成的红包的总额是否正确
-        System.out.println("total:" + total);
+        System.out.println("total:" + total+" ! "+result);
 
         //统计每个钱数的红包数量，检查是否接近正态分布
         int count[] = new int[(int) max + 1];
@@ -33,9 +33,13 @@ public class HongBaoAlgorithm {
             count[(int) result[i]] += 1;
         }
 
+        total = 0;
         for (int i = 0; i < count.length; i++) {
-            System.out.println("" + i + "  " + count[i]);
+            total += i*count[i];
+            System.out.println("红包金额：" + i + " 共 " + count[i] +"个");
         }
+        //检查生成的红包的总额是否正确
+        System.out.println("total:" + total+" ! ");
     }
 
     /**
@@ -65,16 +69,18 @@ public class HongBaoAlgorithm {
     public static long[] generate(long total, int count, long max, long min) {
         long[] result = new long[count];
 
-        long average = total / count;
+        long average = total / count;//平均红包多少钱
 
-        long a = average - min;
-        long b = max - min;
+        System.out.println("平均红包多少钱~"+average);
 
-        //
-        //这样的随机数的概率实际改变了，产生大数的可能性要比产生小数的概率要小。
-        //这样就实现了大部分红包的值在平均数附近。大红包和小红包比较少。
-        long range1 = sqr(average - min);
-        long range2 = sqr(max - average);
+//        long a = average - min;
+//        long b = max - min;
+//
+//        //
+//        //这样的随机数的概率实际改变了，产生大数的可能性要比产生小数的概率要小。
+//        //这样就实现了大部分红包的值在平均数附近。大红包和小红包比较少。
+//        long range1 = sqr(average - min);
+//        long range2 = sqr(max - average);
 
         for (int i = 0; i < result.length; i++) {
             //因为小红包的数量通常是要比大红包的数量要多的，因为这里的概率要调换过来。
