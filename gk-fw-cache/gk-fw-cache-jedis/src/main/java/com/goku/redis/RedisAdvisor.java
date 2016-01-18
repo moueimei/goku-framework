@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created on 2014/9/26.
- *
- * @author moueimei
+ * Pointcut 与 Advice 的配置器
+ * @author Moueimei
  */
 @Component
 public class RedisAdvisor extends AbstractPointcutAdvisor {
@@ -29,5 +29,4 @@ public class RedisAdvisor extends AbstractPointcutAdvisor {
     public Advice getAdvice() {
         return redisInterceptor;
     }
-
 }

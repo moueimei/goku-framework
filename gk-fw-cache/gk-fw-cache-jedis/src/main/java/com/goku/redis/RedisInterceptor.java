@@ -42,16 +42,16 @@ public class RedisInterceptor implements MethodInterceptor {
     }
 
     private Object normalRedis(MethodInvocation invocation, Redis redis) throws Throwable {
-        boolean isBroken = false;
+//        boolean isBroken = false;
         String val = redis.value();
         try {
             jedisHolder.createResource(val);
             return invocation.proceed();
         } catch (JedisException e) {
-            isBroken = true;
+//            isBroken = true;
             throw e;
         } finally {
-            jedisHolder.releaseForce(isBroken, val);
+            jedisHolder.releaseForce();
         }
     }
 
