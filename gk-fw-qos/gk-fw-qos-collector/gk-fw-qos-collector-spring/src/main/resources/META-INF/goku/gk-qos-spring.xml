@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <!-- 本地服务性能采集 -->
+    <bean id="collectInterceptor"
+          class="com.gkframework.qos.collector.spring.CollectInterceptor">
+    	<property name="ignoreRegexs">
+			<value>${qos.monitor.ignoreRegexs:null}</value>
+		</property>
+    </bean>
+    
+	 <bean class="com.gkframework.qos.collector.spring.BeanNameAutoProxyCreator">
+	 	<!-- 
+		<property name="proxyTargetClass">
+     		<value>true</value>
+     	</property>
+		-->
+		<property name="beanNames">
+			<value>${qos.monitor.beanNames:*Service,*ServiceImpl}</value>
+		</property>
+		<property name="ignoreRegexs">
+			<value>${qos.monitor.ignoreRegexs:null}</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>collectInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>
