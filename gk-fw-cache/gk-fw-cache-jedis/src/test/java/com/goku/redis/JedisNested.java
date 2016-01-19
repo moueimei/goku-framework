@@ -22,10 +22,9 @@ public class JedisNested {
 
     @Redis
     public void incr(String key, int times) {
-        for (int i = 0; i < 100; i++) {
+       // for (int i = 0; i < 100; i++) {
             demo.incr(key, times);
-            shardedDemo.incr(key, times);
-        }
+           // shardedDemo.incr(key, times);
+       // }
     }
-
 }

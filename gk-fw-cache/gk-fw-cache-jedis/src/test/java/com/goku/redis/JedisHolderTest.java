@@ -5,6 +5,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import redis.clients.jedis.Jedis;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created on 2014/12/11.
@@ -25,9 +30,19 @@ public class JedisHolderTest extends AbstractTests {
     private String key = "test:jedis";
 
     @Test
-    public void testCreateAndRelease() {
-        jedisNested.incr(key, times);
-        LOGGER.info(String.valueOf(jedisHolder.getConnectionNum(null)));
+    public void testCreateAndRelease() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+
+        CountDownLatch latch = new CountDownLatch(10);
+        for (int i=0;i<10;i++)
+            executorService.submit(() ->{
+                Jedis jedis =JedisProxy.create();
+                System.out.println(jedis);
+                System.out.println("getConnectionNum~"+jedisHolder.getConnectionNum(null));
+               // jedis.close();
+                latch.countDown();
+            });
+        latch.await();
         Assert.assertEquals(0, jedisHolder.getConnectionNum(null));
     }
 
