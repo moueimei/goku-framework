@@ -3,20 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>gk-fw-parent</artifactId>
+        <artifactId>gk-framework</artifactId>
         <groupId>com.gkframework</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gkframework</groupId>
-    <artifactId>gk-framework</artifactId>
+    <artifactId>gk-framework-orm</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>gk-framework-exception</module>
-        <module>gk-framework-quartz</module>
-        <module>gk-framework-orm</module>
-        <module>gk-framework-model</module>
+        <module>gk-framework-orm-mybatis</module>
     </modules>
 
 
