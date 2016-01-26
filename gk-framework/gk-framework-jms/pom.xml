@@ -13,6 +13,7 @@
     <artifactId>gk-framework-jms</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>gk-framework-jms-rabbit</module>
     </modules>
 
 
