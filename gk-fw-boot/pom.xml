@@ -18,6 +18,7 @@
     <modules>
         <module>gk-fw-boot-core</module>
         <module>gk-fw-boot-spring</module>
+        <module>gk-fw-boot-jetty</module>
     </modules>
 
 </project>

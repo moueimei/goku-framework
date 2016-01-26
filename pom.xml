@@ -23,6 +23,8 @@
         <module>gk-fw-config</module>
         <module>gk-fw-cache</module>
         <module>gk-fw-qos</module>
+        <module>gk-fw-algorithm</module>
+        <module>gk-framework</module>
     </modules>
 
     <!-- 本地私服 -->

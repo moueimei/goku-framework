@@ -3,19 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>gk-fw-parent</artifactId>
-        <groupId>com.gkframework</groupId>
+        <artifactId>gk-fw-qos-collector</artifactId>
+        <groupId>com.gkframework.qos</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gkframework.qos</groupId>
-    <artifactId>gk-fw-qos</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>gk-fw-qos-collector</module>
-        <module>gk-fw-qos-server</module>
-    </modules>
+    <artifactId>gk-fw-qos-collector-core</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.gkframework.config</groupId>
+            <artifactId>gk-fw-config-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -56,65 +56,12 @@
         <google.json.version>2.2.4</google.json.version>
         <org.json.version>20140107</org.json.version>
         <logback.ext.spring.version>0.1.2</logback.ext.spring.version>
+        <mybatis.version>3.2.3</mybatis.version>
+        <mybatis.spring.version>1.2.0</mybatis.spring.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <!-- biz -->
-            <!-- boot start -->
-            <dependency>
-                <groupId>tv.acframework.boot</groupId>
-                <artifactId>ac-boot-spring</artifactId>
-                <version>${spring.boot.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>tv.acframework.boot</groupId>
-                <artifactId>ac-boot-jetty</artifactId>
-                <version>${jetty.boot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>tv.acframework.boot</groupId>
-                <artifactId>ac-boot-tomcat</artifactId>
-                <version>${tomcat.boot.version}</version>
-            </dependency>
-
-            <!-- boot end -->
-            <!-- collector start -->
-            <dependency>
-                <groupId>tv.acframework.qos</groupId>
-                <artifactId>ac-qos-collector-dubbo</artifactId>
-                <version>${dubbo.collector.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>tv.acframework.qos</groupId>
-                <artifactId>ac-qos-collector-spring</artifactId>
-                <version>${spring.collector.version}</version>
-            </dependency>
-            <!-- collector end -->
-
-            <!-- config start -->
-            <dependency>
-                <groupId>tv.acframework.config</groupId>
-                <artifactId>ac-config-diamond</artifactId>
-                <version>${config.diamond.version}</version>
-            </dependency>
-            <!-- config end -->
-            <!-- orm start -->
-            <dependency>
-                <groupId>tv.acframework.orm</groupId>
-                <artifactId>ac-orm-mybatis</artifactId>
-                <version>${mybatis.orm.version}</version>
-            </dependency>
-            <!-- orm end -->
-
-            <!-- model start-->
-            <dependency>
-                <groupId>tv.acframework.framework</groupId>
-                <artifactId>ac-framework-model</artifactId>
-                <version>${model.orm.version}</version>
-            </dependency>
-            <!-- model end-->
-
             <!-- dubbo 服务注册方式 start 必须引入-->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -150,6 +97,11 @@
             <!-- dubbo 服务注册方式 end -->
 
             <!--log-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.16</version>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>log4j-over-slf4j</artifactId>
@@ -189,6 +141,12 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector.version}</version>
                 <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>c3p0</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>0.9.1.2</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -241,6 +199,16 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jms</artifactId>
                 <version>${org.springframework-version}</version>
             </dependency>
             <!--AOP-->
@@ -389,6 +357,17 @@
                 <groupId>commons-httpclient</groupId>
                 <artifactId>commons-httpclient</artifactId>
                 <version>3.1</version>
+            </dependency>
+            <!-- mybaties -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

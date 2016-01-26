@@ -17,6 +17,7 @@
         <module>gk-framework-quartz</module>
         <module>gk-framework-orm</module>
         <module>gk-framework-model</module>
+        <module>gk-framework-jms</module>
     </modules>
 
 
