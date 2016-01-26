@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!--<context:property-placeholder location="classpath*:kafka.properties" ignore-unresolvable="true" />-->
+
+	<bean id="consumerProperties"
+		  class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="zookeeper.connect">${zookeeper.connect}</prop>
+				<prop key="zookeeper.connection.timeout.ms">15000</prop>
+				<prop key="zookeeper.session.timeout.ms">15000</prop>
+				<prop key="group.id">${group.id}</prop>
+				<!-- 最大取多少块缓存到消费者(默认10) -->
+				<prop key="queued.max.message.chunks">50</prop>
+				<prop key="auto.commit.interval.ms">${auto.commit.interval.ms:60000}</prop>
+				<!-- 如果zookeeper没有offset值或offset值超出范围。那么就给个初始的offset。有smallest、largest-->
+				<prop key="auto.offset.reset">${auto.offset.reset:largest}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="consumerConfig" class="kafka.consumer.ConsumerConfig">
+		<constructor-arg index="0" ref="consumerProperties" />
+	</bean>
+	
+	<bean id="monitorMessageReceiver" class="com.gkframework.qos.server.monitor.receiver.MonitorMessageReceiver"
+		init-method="init" destroy-method="destroy">
+		<property name="consumerConfig" ref="consumerConfig" />
+		<property name="topic" value="${consumer.topic}" /> 
+		<property name="partitionsNum" value="${consumer.partitionsNum}" />
+		<property name="minCollectService" ref="minCollectService" />
+		<property name="minStatService" ref="minStatService" />
+		<property name="registryContainer" ref="registryContainer" />
+	</bean>
+	
+</beans>
