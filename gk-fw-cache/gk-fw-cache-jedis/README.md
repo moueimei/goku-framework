@@ -1,4 +1,4 @@
-Acfun-api-redis
+goku-api-redis
 ===========
 本项目是[Jedis](https://github.com/xetorthio/jedis)的增强版,实现了自动获取连接和关闭连接,提供基于redis的分布式锁实现.
 
